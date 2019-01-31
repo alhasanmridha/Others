@@ -3,9 +3,12 @@ set shiftwidth=4
 noremap <F2> :set invnumber<CR>
 inoremap <F2> <C-O>:set invnumber<CR>
 noremap F gg=G
-map <F9> :w <CR> : !g++ -std=c++17 % && ./a.out <CR>
+
 vnoremap <C-c> "+y
 
+autocmd filetype c inoremap <F9> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd filetype cpp imap <F9> <Esc> :w <CR> : !g++ -std=c++17 % && ./a.out <CR>
+autocmd filetype cpp noremap <F9> <Esc> :w <CR> : !g++ -std=c++17 % && ./a.out <CR>
 
 
 
@@ -63,6 +66,8 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 Plugin 'Valloric/YouCompleteMe'
+let g:ycm_key_list_stop_completion = [ '<C-y>', '<Enter>' ]
+
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs'
 " All of your Plugins must be added before the following line
