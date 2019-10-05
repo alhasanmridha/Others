@@ -13,7 +13,6 @@ autocmd filetype cpp noremap <F9> <Esc> :w <CR> : !g++ -std=c++17 % && ./a.out <
 
 
 
-
 noremap <F2> :set invnumber<CR>
 inoremap <F2> <C-O>:set invnumber<CR>
 noremap F gg=G
